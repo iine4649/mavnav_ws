@@ -24,6 +24,9 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'vslam_to_mavros = warehouse_vslam_nav.vslam_to_mavros:main',
+            'warehouse_scan = warehouse_vslam_nav.warehouse_scan:main',
+            'utils = warehouse_vslam_nav.utils:main',
         ],
     },
 )

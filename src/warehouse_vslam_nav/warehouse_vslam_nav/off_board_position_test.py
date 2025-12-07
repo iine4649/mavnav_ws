@@ -3,6 +3,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 
+
 class OffboardPositionTest(Node):
     def __init__(self):
         super().__init__('offboard_position_test')
@@ -16,12 +17,11 @@ class OffboardPositionTest(Node):
     def timer_cb(self):
         msg = PoseStamped()
         msg.header.stamp = self.get_clock().now().to_msg()
-        # 原点付近にちょっとだけオフセットした setpoint
         msg.pose.position.x = 1.0
         msg.pose.position.y = 0.0
         msg.pose.position.z = 1.0
-        # 姿勢はとりあえずそのまま（PX4が補完）
         self.pub.publish(msg)
+
 
 def main():
     rclpy.init()
@@ -30,5 +30,7 @@ def main():
     node.destroy_node()
     rclpy.shutdown()
 
+
 if __name__ == '__main__':
     main()
+
